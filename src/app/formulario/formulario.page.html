@@ -1,0 +1,132 @@
+<ion-header>
+    <ion-toolbar>
+      <button (click)="setQuestion(1)">Q1</button>
+      <button (click)="setQuestion(2)">Q2</button>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content gray padding>
+  
+   
+    <div class="myForm">
+      <h1>I - ESTADO DE SAÚDE DO IDOSO</h1>
+      <hr>
+  
+      <!----------------------------Questao 1------------------------------>
+      <ion-radio-group *ngIf="question == 1" [(ngModel)]='formulario.Q1'> 
+        <h2>1.	Você percebe um aumento na necessidade de cuidado ou uma maior dependência por parte do idoso?</h2>
+        <ion-row>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>Não</ion-label>
+              <ion-radio value="Não"></ion-radio>
+            </ion-item>
+          </ion-col>
+  
+          <ion-col>
+            <ion-item>
+              <ion-label>Sim</ion-label>
+              <ion-radio value="Sim"></ion-radio>
+            </ion-item>
+          </ion-col>
+          
+        </ion-row>
+      </ion-radio-group>
+      
+       <!----------------------------Questao 2------------------------------>
+      <div *ngIf="question == 2">
+        <ion-radio-group [(ngModel)]="formulario.Q2"> 
+          <h2>2.	O idoso precisa de ajuda para a realização do autocuidado?</h2>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Não</ion-label>
+                <ion-radio value="Não"></ion-radio>
+              </ion-item>
+            </ion-col>
+  
+            <ion-col>
+              <ion-item>
+                <ion-label>Sim</ion-label>
+                <ion-radio value="Sim"></ion-radio>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+  
+        <!----------------------------Questao 2.1------------------------------>
+        <ion-list *ngIf="formulario.Q2 == 'Sim'">
+          <h2>2.1.	Se sim, para qual tarefa? </h2>
+  
+          <ion-item >
+            <ion-label>Tomar banho</ion-label>
+            <ion-checkbox [(ngModel)]="Q2_1A"></ion-checkbox>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Higiene pessoal: usar o banheiro, limpar-se ou arrumar as roupas</ion-label>
+            <ion-checkbox [(ngModel)]="Q2_1B"></ion-checkbox>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Vestir-se</ion-label>
+            <ion-checkbox [(ngModel)]="Q2_1C"></ion-checkbox>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Alimentar-se</ion-label>
+            <ion-checkbox [(ngModel)]="Q2_1D"></ion-checkbox>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Transferência: Levantar-se e andar</ion-label>
+            <ion-checkbox [(ngModel)]="Q2_1E"></ion-checkbox>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Outras</ion-label>
+            <ion-checkbox [(ngModel)]="showInput" value=1></ion-checkbox>
+          </ion-item>
+  
+          <ion-item *ngIf="showInput == 1">
+            <ion-input placeholder="Digite aqui as atividades"></ion-input>
+          </ion-item>
+              
+        </ion-list>
+        <ion-button (click)="setInter(1)">Intervenção</ion-button>
+      </div>
+  
+  
+    </div>
+  
+     <!----------------------------Intervenção 1------------------------------>
+    <div class="myForm" *ngIf="showInter == 1 && question == 2 ">
+    <ion-radio-group >
+      <h2>INTERVENÇÃO</h2>
+  
+      <ion-item>
+        <ion-label value="Verificar a necessidade de dispositivos de adaptação para higiene pessoal, vestir-se, arrumar-se, usar o vaso sanitário e alimentar-se.">Verificar a necessidade de dispositivos de adaptação para higiene pessoal, vestir-se, arrumar-se, usar o vaso sanitário e alimentar-se.</ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Encorajar o idoso a realizar atividades normais da vida diária de acordo como seu nível de capacidade.</ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Incentivar o cuidador a encorajar a independência do idoso e a interferir apenas quando o paciente não conseguir executar algo</ion-label>
+        <ion-radio></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    </div>
+  
+    <div class="pos-center">
+        <button class="btn-save" (click)="saveFormulario()">Salvar</button>
+    </div>
+      
+    
+  
+  </ion-content>
+  
