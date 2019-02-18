@@ -23,4 +23,8 @@ export class FormListPage implements OnInit {
     this.router.navigate(['/formulario']);
   }
 
+  public goToDetails(id){
+    this.router.navigate(['/form-details', id]);
+  }
+
 }

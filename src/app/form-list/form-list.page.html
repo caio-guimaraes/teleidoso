@@ -10,9 +10,9 @@
 <ion-content padding>
 
     <ion-list>
-      <ion-list-header><h3>Pacientes</h3></ion-list-header>
-      <ion-card *ngFor="let form of listaForms">
-          <ion-row><p><b>Q2:</b> {{ form.Q2 }}</p></ion-row>
+      <ion-list-header><h3>Formulários</h3></ion-list-header>
+      <ion-card *ngFor="let form of listaForms" button (click)="goToDetails(form.key)">
+          <ion-row><p><b>Paciente:</b> {{ form.paciente }}</p></ion-row>
       </ion-card>
     </ion-list>
   

@@ -9,6 +9,8 @@ const routes: Routes = [
   { path: 'paciente-details/:id', loadChildren: './paciente-details/paciente-details.module#PacienteDetailsPageModule' },
   { path: 'form-list', loadChildren: './form-list/form-list.module#FormListPageModule' },
   { path: 'formulario', loadChildren: './formulario/formulario.module#FormularioPageModule' },
+  { path: 'form-details/:id', loadChildren: './form-details/form-details.module#FormDetailsPageModule' },
+
 ];
 
 @NgModule({
