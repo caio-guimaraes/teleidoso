@@ -82,6 +82,14 @@ export class HomePage {
     toast.present();      
   }
 
+  public addPaciente(){
+    this.router.navigate(['/cadastro-pacientes']);
+  }
+
+  public addForm(){
+    this.router.navigate(['/formulario']);
+  }
+
   // public goToPacientesPage(){
   //   this.navCtrl.navigateRoot('PacientesListPage');
   // }

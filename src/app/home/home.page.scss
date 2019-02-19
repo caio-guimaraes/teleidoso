@@ -1,1 +1,39 @@
 
+.menu-toggle-hidden{
+    display: block !important;
+}
+
+ion-menu-toggle{
+    display: block !important;
+}
+
+ion-menu-button{
+    display:block !important;
+}
+
+.logo{
+    width:550px;
+    height:450px;
+    text-align:center;
+    padding:0px;
+    margin:0px;
+}
+
+.myContent{
+    padding-left:100px;
+    padding-right:100px;
+    text-align:center;
+}
+
+.myContent ion-button{
+    width:400px;
+    height:80px;
+   
+}
+
+.myContent ion-icon{
+    font-size:40px;
+    margin-right:5px;
+}
+
+

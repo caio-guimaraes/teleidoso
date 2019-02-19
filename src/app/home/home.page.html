@@ -3,16 +3,40 @@
     <ion-title>
       Teleidoso
     </ion-title>
+    <ion-buttons id="btn-menu"  slot="start">
+      <ion-menu-button id="btn-menu" when="xl"></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content padding>
 
-  <div *ngIf="user != null">
-      <h3>Bem vindo: {{ user.email }}</h3>
-      <br>
-      <ion-button expand="block" [routerLink]="['/pacientes-list']">Ver Pacientes</ion-button>
-      <ion-button expand="block" (click)="Sair()">Sair</ion-button>
+  <div *ngIf="user != null" class="myContent">
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col><ion-img class="logo" src="/../../assets/images/logo_teleidoso.png"></ion-img></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button fill="outline" (click)="addPaciente()">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            Adicionar Paciente
+          </ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+          <ion-button fill="outline" (click)="addForm()">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            Preencher Formulário
+          </ion-button>
+        </ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
   </div>
 
   <div *ngIf="user == null">
