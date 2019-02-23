@@ -1,9 +1,7 @@
     
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-scroll-y{
-    background:#f2f2f2 !important;
-}
+
 
 .myForm{
     padding-left:60px;
@@ -28,16 +26,22 @@ scroll-y{
 }
 
 ion-toolbar  button{
-        background-color: #c0392b;
+        background-color: #3880ff;
         width: 70px;
         height: 40px;
-        margin-right: 5px;
-        margin-left: 5px;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-bottom:5px;
+        margin-top:5px;
         color: #fff;
         border-radius: 5px;
         box-shadow: 0 0 20px 0 rgba(0,0,0,.1);
-        font-family: 'Roboto', sans-serif !important    ;
+        font-family: "Times New Roman", Times, serif;
+        font-size:14px;
+}
 
+.font-roboto{
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .btn-save{
@@ -45,11 +49,10 @@ ion-toolbar  button{
     background-color:#1fb950;
     width:150px;
     text-align: center !important;
-    margin-top:10px;
-    margin-bottom:10px !important;
     height: 50px;
     color: #fff;
     border-radius: 5px;
     font-size:16px;
+    margin-top:10px;
 }
 

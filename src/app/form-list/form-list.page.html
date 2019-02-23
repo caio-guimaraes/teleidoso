@@ -12,11 +12,22 @@
 
 <ion-content padding>
 
-    <ion-list>
-      <ion-list-header><h3>Formulários</h3></ion-list-header>
-      <ion-card *ngFor="let form of listaForms" button (click)="goToDetails(form.key)">
-          <ion-row><p><b>Paciente:</b> {{ form.paciente }}</p></ion-row>
-      </ion-card>
+    <ion-list class="myForm">
+      <div text-center color="primary"><h1 color="primary">Formulários</h1></div>
+      <ion-item *ngFor="let form of listaForms" button (click)="goToDetails(form.key)">
+        <ion-icon color="primary" name="list-box"></ion-icon>
+        <ion-label color="primary">
+            Cuidador: {{ form.cuidador }}
+        </ion-label>
+      </ion-item>
+
+      <div text-center>
+          <ion-button fill="outline" text-center class="btn-add" (click)="goToFormulario()">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            Preencher formulário
+          </ion-button>
+      </div>
+
     </ion-list>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
