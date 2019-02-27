@@ -11,6 +11,7 @@ export interface Formulario {
   // INPUT >>> Salva como String
 
   cuidador: String;
+  data: any;
   // Variaveis relacionadas a parte I
   I1: String;
   I2: String;
@@ -32,14 +33,15 @@ export interface Formulario {
   II3:String;
   II4: String;
   II5: String;
-  II6:String[];
+  II6:String;
   II7: String;
   II8: String;
   IIR1:String[];
 
   // Variaveis relacionadas a parte III
   III1: String;
-  III1_1: String[];
+  III1_1: String;
+  III1_2: String[];
   III2:String;
   III2_1: String;
   IIIR1: String[];

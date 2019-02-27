@@ -15,18 +15,36 @@ export class FormularioPage implements OnInit {
   question = 0;
   showInter = 0;
   showOptions = 0;
+  titulo = 'INSTRUMENTO DE TELEMONITORAMENTO - CUIDADOR DE PESSOAS COM DEMÊNCIA';
   
   //Variaveis para checkbox
-  I2_1A:boolean; I2_1B:boolean; I2_1C:boolean; I2_1D:boolean; I2_1E:boolean; I2_1F:boolean; I2_1i; 
+  I2_1A:boolean; I2_1B:boolean; I2_1C:boolean; I2_1D:boolean; I2_1E:boolean; I2_1F:boolean; I2_1i;
+  III1_2A:boolean; III1_2B:boolean; III1_2C:boolean; III1_2D:boolean; III1_2E:boolean; III1_2F:boolean;  III1_2G:boolean; III1_2H:boolean; III1_2I:boolean; III1_2j:any;
+  III3_1A:boolean; III3_1B:boolean; III3_1C:boolean; III3_1D:boolean; III3_1e:any;
 
   //Variaveis para checkbox de intervenção
   IR1_A:boolean; IR1_B:boolean; IR1_C:boolean;
   IR2_A:boolean; IR2_B:boolean;
   IR3_A:boolean; IR3_B:boolean; IR3_C:boolean;
+  IIR1_A:boolean; IIR1_B:boolean;
+  IIIR1_A:boolean; IIIR1_B:boolean; IIIR1_C:boolean; IIIR1_D:boolean; IIIR1_E:boolean;
+  IIIR2_A:boolean; IIIR2_B:boolean; IIIR2_C:boolean; IIIR2_D:boolean;
+  IIIR3_A:boolean; IIIR3_B:boolean; IIIR3_C:boolean;
+  IIIR4_A:boolean; IIIR4_B:boolean;
+  IIIR5_A:boolean; IIIR5_B:boolean; IIIR5_C:boolean;
+  IIIR6_A:boolean; IIIR6_B:boolean;
+  IIIR7_A:boolean; IIIR7_B:boolean;
+  IIIR8_A:boolean; IIIR8_B:boolean; IIIR8_C:boolean;
+  IIIR9_A:boolean; IIIR9_B:boolean; IIIR9_C:boolean;
+
+
+
   
+
 
   formulario: Formulario = {
     cuidador: '',
+    data: new Date().getTime(),
     // Variaveis relacionadas a parte I
     I1: '',
     I2: '',
@@ -48,14 +66,15 @@ export class FormularioPage implements OnInit {
     II3: '',
     II4: '',
     II5: '',
-    II6:[],
+    II6: '',
     II7: '',
     II8: '',
     IIR1:[],
   
     // Variaveis relacionadas a parte III
     III1: '',
-    III1_1: [],
+    III1_1: '',
+    III1_2:[],
     III2:'',
     III2_1: '',
     IIIR1: [],
@@ -111,6 +130,7 @@ export class FormularioPage implements OnInit {
 
   constructor(private router: Router, private formularioService: FormularioService, private pacientesList: PacienteService){
     console.log(this.showOptions);
+    this.formulario.data = new Date().toISOString();
   }
 
   ngOnInit() {
@@ -124,6 +144,7 @@ export class FormularioPage implements OnInit {
       this.showInter = 0;
     }
     this.question = q;
+    this.changeTitulo();
   }
 
   public setInter(i){
@@ -133,10 +154,26 @@ export class FormularioPage implements OnInit {
     else{
     this.showInter = i;
     }
+    
+  }
+
+  public changeTitulo(){
+    if (this.question==0) { this.titulo = 'INSTRUMENTO DE TELEMONITORAMENTO - CUIDADOR DE PESSOAS COM DEMÊNCIA'};
+    if (this.question > 0 && this.question < 8) {this.titulo = "I - ESTADO DE SAÚDE DO IDOSO"};
+    if (this.question >= 8 && this.question < 16) {this.titulo = "II- CARACTERÍTICAS DO AMBIENTE DOMÉSTICO"};
+    if (this.question >= 17 && this.question < 29) {this.titulo = "III– ESTADO DE SAÚDE DO CUIDADOR"};
+    if (this.question >= 29 && this.question < 34) {this.titulo = "IV- RELACIONAMENTO ENTRE O CUIDADOR E O RECEPTOR DE CUIDADOS"};
+    if (this.question >= 34 ) {this.titulo = "V- PROCESSOS FAMILIARES"};
+
+  }
+
+  public nextQuestion(){
+    this.question ++;
+    this.changeTitulo();
   }
  
  
-  public async saveFormulario(){
+  public async saveForm(){
     this.checkboxTraslate();
     this.formularioService.addFormulario(this.formulario).then(ref => {
       this.router.navigate(['/form-list'])
@@ -146,7 +183,7 @@ export class FormularioPage implements OnInit {
 
  public checkboxTraslate(){
 
-  /* Checkbox Questao 2.1 */
+  /* Checkbox Questao I2.1 */
   if (this.I2_1A) { this.formulario.I2_1.push('Tomar banho') };
   if (this.I2_1B) { this.formulario.I2_1.push('Higiene pessoal: usar o banheiro, limpar-se ou arrumar as roupas') };
   if (this.I2_1C) { this.formulario.I2_1.push('Vestir-se') };
@@ -168,6 +205,71 @@ export class FormularioPage implements OnInit {
   if (this.IR3_B) { this.formulario.IR3.push('Orientar sobre a patologia – Explicar que o Alzheimer é predominante nos idosos, o cuidador deve ser orientado que a perda das funções cognitivas como a memória, atenção, linguagem e orientação são esperadas. Deve-se mencionar também que não há cura, mas há tratamento para a doença, o tratamento farmacológico e o não farmacológico que deve ser  composto por atividades de estimulação cognitiva, física e social visando a manutenção\ preservação dessas habilidades.  ')};
   if (this.IR3_C) { this.formulario.IR3.push('Esclarecer dúvidas de acordo com a demanda')};
 
+  /* Checkbox Intervenção IIR1 - II8 */
+  if (this.IIR1_A) { this.formulario.IIR1.push("Orientar sobre condições adequadas para moradia com o idoso")};
+  if (this.IIR1_B) { this.formulario.IIR1.push("Orientar sobre risco de quedas – Não usar tapetes, não deixar objetos soltos no chão da casa, utilizar barras de apoio em escadas, banheiros; atentar-se  ao piso molhado; permitir que o ambiente esteja sempre bem iluminado. ")};
+
+  /* Checkbox Questao III1.2 */
+  if (this.III1_2A) { this.formulario.III1_2.push('HAS') };
+  if (this.III1_2B) { this.formulario.III1_2.push('DM') };
+  if (this.III1_2C) { this.formulario.III1_2.push('Cardiopatia') };
+  if (this.III1_2D) { this.formulario.III1_2.push('Doença renal') };
+  if (this.III1_2E) { this.formulario.III1_2.push('Problema gastrointestinal') };
+  if (this.III1_2F) { this.formulario.III1_2.push('Problema emocional/psicológico') };
+  if (this.III1_2G) { this.formulario.III1_2.push('Enxaqueca') };
+  if (this.III1_2H) { this.formulario.III1_2.push('Sobrepeso') };
+  if (this.III1_2I) { this.formulario.III1_2.push(this.III1_2j)};
+
+  /* Checkbox Intervenção IIIRI - III2.1 */
+  if (this.IIIR1_A) { this.formulario.IIIR1.push('Incentivar o cuidador a cuidar de sua saúde') };
+  if (this.IIIR1_B) { this.formulario.IIIR1.push('Demostrar a importância que é o fato dele estar bem de saúde') };
+  if (this.IIIR1_C) { this.formulario.IIIR1.push('Orientar sobre a necessidade de realização de uma dieta equilibrada') };
+  if (this.IIIR1_D) { this.formulario.IIIR1.push('Explicar sobre o uso adequado das medicações prescritas pelo médico') };
+  if (this.IIIR1_E) { this.formulario.IIIR1.push('Incentivar a realização de consultas periódicas para acompanhamento do estado de saúde  em ambulatório/unidade de saúde.') };
+
+  /* Checkbox Questao III3.1 */
+  if (this.III3_1A) { this.formulario.III3_1.push('Álcool') };
+  if (this.III3_1B) { this.formulario.III3_1.push('Tabaco') };
+  if (this.III3_1C) { this.formulario.III3_1.push('Automedicação') };
+  if (this.III3_1D) { this.formulario.III3_1.push(this.III3_1e)};
+
+  /* Checkbox Intervenção IIIR2 - III3.1 */
+  if (this.IIIR2_A) { this.formulario.IIIR2.push('Explicar a gravidade do uso de drogas não farmacológicas') };
+  if (this.IIIR2_B) { this.formulario.IIIR2.push('Esclarecer sobre a existência de grupos de ajuda para narcóticos') };
+  if (this.IIIR2_C) { this.formulario.IIIR2.push('Orientar sobre outros meios menos agressivos para relaxar\ fugir da realidade') };
+  if (this.IIIR2_D) { this.formulario.IIIR2.push('Orientar sobre a não realização da automedicação') };
+
+  /* Checkbox Intervenção IIIR3 - III4.1 */
+  if (this.IIIR3_A) { this.formulario.IIIR3.push('Orientar sobre a necessidade de realização de uma dieta equilibrada') };
+  if (this.IIIR3_B) { this.formulario.IIIR3.push('Manter alimentação de costume, dando preferência para alimentos leves (frutas e legumes), e evitando frituras e condimentados.') };
+  if (this.IIIR3_C) { this.formulario.IIIR3.push('Orientar sobre a importância de uma boa dieta, exercícios e ingestão de líquidos durante o dia.') };
+
+  /* Checkbox Intervenção IIIR4 - III6 */
+  if (this.IIIR4_A) { this.formulario.IIIR4.push('Auxiliar o desenvolvimento de expectativas realistas sobre o cuidado') };
+  if (this.IIIR4_B) { this.formulario.IIIR4.push('Auxiliar na identificação de aspectos da sobrecarga que podem\não podem ser alterados. ') };
+ 
+  /* Checkbox Intervenção IIIR5 - III7.1 */
+  if (this.IIIR5_A) { this.formulario.IIIR5.push('Incentivar o cuidador a falar os porquês das respostas anteriores') };
+  if (this.IIIR5_B) { this.formulario.IIIR5.push('Conversar visando demonstrar que compreende os motivos do cuidador') };
+  if (this.IIIR5_C) { this.formulario.IIIR5.push('Orientar sobre formas de melhorar a rotina de cuidados') };
+
+  /* Checkbox Intervenção IIIR6 - III9 */
+  if (this.IIIR6_A) { this.formulario.IIIR6.push('Determinar risco de segurança para idoso e cuidador(sinais de violência)') };
+  if (this.IIIR6_B) { this.formulario.IIIR6.push('Incentivar o cuidador a ventilar seus sentimentos de maneira adequada e segura (atividade física, socar saco de areia, arteterapia)') };
+  
+  /* Checkbox Intervenção IIIR7 - III10 */
+  if (this.IIIR7_A) { this.formulario.IIIR7.push('Auxiliar na identificação de atividades preferidas') };
+  if (this.IIIR7_B) { this.formulario.IIIR7.push('Auxiliar na atribuição de prioridade as atividades para acomodar os níveis de energia ') };
+ 
+  /* Checkbox Intervenção IIIR8 - III11 */
+  if (this.IIIR8_A) { this.formulario.IIIR8.push('Orientar o cuidador a manter ciclo normal de sono (não dormir de dia, dormir a noite)') };
+  if (this.IIIR8_B) { this.formulario.IIIR8.push('Indicar técnicas de relaxamento, e redução da cafeína.') };
+  if (this.IIIR8_C) { this.formulario.IIIR8.push('Orientar sobre a importância do sono ') };
+
+  /* Checkbox Intervenção IIIR9 - III13 */
+  if (this.IIIR9_A) { this.formulario.IIIR9.push('Incentivar a realização de atividades de lazer') };
+  if (this.IIIR9_B) { this.formulario.IIIR9.push('Orientar sobre a importância da realização de atividades de lazer') };
+  if (this.IIIR9_C) { this.formulario.IIIR9.push('Incentivar o cuidador a otimizar seu tempo destinado aos cuidados para que consiga destinar tempo para si mesmo.') };
 
  }
 
