@@ -21,6 +21,7 @@ export class FormularioPage implements OnInit {
   I2_1A:boolean; I2_1B:boolean; I2_1C:boolean; I2_1D:boolean; I2_1E:boolean; I2_1F:boolean; I2_1i;
   III1_2A:boolean; III1_2B:boolean; III1_2C:boolean; III1_2D:boolean; III1_2E:boolean; III1_2F:boolean;  III1_2G:boolean; III1_2H:boolean; III1_2I:boolean; III1_2j:any;
   III3_1A:boolean; III3_1B:boolean; III3_1C:boolean; III3_1D:boolean; III3_1e:any;
+  III12_1A:boolean; III12_1B:boolean; III12_1C:boolean; III12_1D:boolean; III12_1E:boolean; III12_1F:boolean;  III12_1G:boolean; III12_1H:boolean; III12_1I:boolean; III12_1j:any;
 
   //Variaveis para checkbox de intervenção
   IR1_A:boolean; IR1_B:boolean; IR1_C:boolean;
@@ -36,11 +37,9 @@ export class FormularioPage implements OnInit {
   IIIR7_A:boolean; IIIR7_B:boolean;
   IIIR8_A:boolean; IIIR8_B:boolean; IIIR8_C:boolean;
   IIIR9_A:boolean; IIIR9_B:boolean; IIIR9_C:boolean;
-
-
-
-  
-
+  IVR1_A:boolean; IVR1_B:boolean; IVR1_C:boolean;
+  IVR2_A:boolean; IVR2_B:boolean;
+  VR1_A:boolean; VR1_B:boolean;
 
   formulario: Formulario = {
     cuidador: '',
@@ -168,8 +167,13 @@ export class FormularioPage implements OnInit {
   }
 
   public nextQuestion(){
-    this.question ++;
-    this.changeTitulo();
+    if (this.showInter == 1){
+      this.showInter = 0;
+    }
+    if (this.question+1 < 36){
+      this.question ++;
+      this.changeTitulo();
+    }
   }
  
  
@@ -270,6 +274,31 @@ export class FormularioPage implements OnInit {
   if (this.IIIR9_A) { this.formulario.IIIR9.push('Incentivar a realização de atividades de lazer') };
   if (this.IIIR9_B) { this.formulario.IIIR9.push('Orientar sobre a importância da realização de atividades de lazer') };
   if (this.IIIR9_C) { this.formulario.IIIR9.push('Incentivar o cuidador a otimizar seu tempo destinado aos cuidados para que consiga destinar tempo para si mesmo.') };
+
+
+  /* Checkbox Questao III12.1 */
+  if (this.III12_1A) { this.formulario.III12_1.push('Sai com amigos ou familiares') };
+  if (this.III12_1B) { this.formulario.III12_1.push('Passeios a lugares diferentes') };
+  if (this.III12_1C) { this.formulario.III12_1.push('Viaja') };
+  if (this.III12_1D) { this.formulario.III12_1.push('Fica em casa') };
+  if (this.III12_1E) { this.formulario.III12_1.push('Vai a Igreja') };
+  if (this.III12_1F) { this.formulario.III12_1.push('Vai ao Cinema') };
+  if (this.III12_1G) { this.formulario.III12_1.push('Vai ao Teatro') };
+  if (this.III12_1H) { this.formulario.III12_1.push('Realiza caminhadas') };
+  if (this.III12_1I) { this.formulario.III12_1.push(this.III12_1j)};
+
+ /* Checkbox Intervenção IVR1 - IV4 */
+ if (this.IVR1_A) { this.formulario.IVR1.push('Avaliar/assegurar que o melhor cuidado possível está sendo realizado') };
+ if (this.IVR1_B) { this.formulario.IVR1.push('Avaliar a reação emocional familiar a condição do idoso') };
+ if (this.IVR1_C) { this.formulario.IVR1.push('Incentivar interação entre o familiar\cuidador e o idoso') };
+
+ /* Checkbox Intervenção IVR2 - IV5 */
+ if (this.IVR2_A) { this.formulario.IVR2.push('Verificar se o idoso apresenta sinais de abuso emocional ') };
+ if (this.IVR2_B) { this.formulario.IVR2.push('Identificar cuidadores que apresentam saúde física ou mental prejudicada') };
+
+ /* Checkbox Intervenção VR1 - VR2 */
+ if (this.VR1_A) { this.formulario.VR1.push('Avaliar possibilidade de revezamento dos cuidados ') };
+ if (this.VR1_B) { this.formulario.VR1.push('Incentivar diálogo do cuidador com familiares a respeito dos cuidados ') };
 
  }
 
