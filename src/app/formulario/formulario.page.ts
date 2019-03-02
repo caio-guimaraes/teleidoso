@@ -3,6 +3,7 @@ import { FormularioService, Formulario } from '../services/formulario.service';
 import { Router } from '@angular/router';
 import { PacienteService } from '../services/paciente.service';
 import { Paciente } from '../models/paciente/paciente.model';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-formulario',
@@ -43,7 +44,7 @@ export class FormularioPage implements OnInit {
 
   formulario: Formulario = {
     cuidador: '',
-    data: new Date().getTime(),
+    data: '',
     // Variaveis relacionadas a parte I
     I1: '',
     I2: '',
@@ -127,7 +128,7 @@ export class FormularioPage implements OnInit {
 
   formularioId = null;
 
-  constructor(private router: Router, private formularioService: FormularioService, private pacientesList: PacienteService){
+  constructor(private router: Router, private formularioService: FormularioService, private pacientesList: PacienteService, private AlertController: AlertController){
     console.log(this.showOptions);
     this.formulario.data = new Date().toISOString();
   }
@@ -178,12 +179,27 @@ export class FormularioPage implements OnInit {
  
  
   public async saveForm(){
-    this.checkboxTraslate();
-    this.formularioService.addFormulario(this.formulario).then(ref => {
-      this.router.navigate(['/form-list'])
-    })
+    const alert = await this.AlertController.create({
+      header: 'Salvar',
+      message: 'Deseja salvar esse formulário?',
+      buttons: [
+        {
+          text: 'Cancelar' // don't do anything when cancel
+        },
+        {
+          text: 'Confirmar',
+          handler: () => {
+          //this.noteService.removeNote(this.note);
+          this.checkboxTraslate();
+          this.formularioService.addFormulario(this.formulario).then(ref => {
+          this.router.navigate(['/form-list'])
+          })
+          }
+          }
+          ]
+          });
+          await alert.present();
   }
-
 
  public checkboxTraslate(){
 

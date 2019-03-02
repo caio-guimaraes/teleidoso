@@ -10,8 +10,7 @@
 
 </ion-header>
 
-<ion-content class="bg" padding>
-
+<ion-content color="light" padding>
   <div *ngIf="user != null" class="myContent">
       <ion-row>
         <ion-col></ion-col>
@@ -39,31 +38,30 @@
       </ion-row>
   </div>
 
-  <div *ngIf="user == null">
-    <br>
-    <h3>Login / Cadastro</h3>
+  <div *ngIf="user == null" class="loginForm">
+    <h1 color="dark" text-center>Login / Cadastro</h1>
 
     <ion-item>
-        <ion-label position="floating">
-          <ion-icon name='person'></ion-icon> Usuário
+        <ion-label color="primary" position="floating">
+          <ion-icon color="primary" name='person'></ion-icon> Usuário
         </ion-label>
         <ion-input type="text" [(ngModel)] = "usuario"></ion-input>
         <!-- <ion-input type="text" #usuario></ion-input> -->
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">
-        <ion-icon name='lock'></ion-icon> Senhas
+      <ion-label color="primary" position="floating">
+        <ion-icon color="primary" name='lock'></ion-icon> Senhas
       </ion-label>
       <ion-input type="password" [(ngModel)] = "senha"></ion-input>
       <!-- <ion-input type="password" #senha></ion-input> -->
     </ion-item>
     <br>
-    <ion-button expand= "block" (click)="LoginComEmail(usuario, senha)">Login</ion-button>
-    <ion-button expand="block" (click)="cadastrarUsuario(usuario, senha)">Cadastrar</ion-button>
-
-    <ion-button expand="block"  fill="clear" (click)="resetPassword(usuario)">Esqueci minha Senha</ion-button>        
     
+      <ion-button color="tertiary" class="btnLogin" expand= "block" (click)="LoginComEmail(usuario, senha)" >Login</ion-button>
+      <ion-button color="tertiary" class="btnLogin" expand="block" (click)="cadastrarUsuario(usuario, senha)" >Cadastrar</ion-button>
+
+      <ion-button expand="block"  fill="clear" (click)="resetPassword(usuario)">Esqueci minha Senha</ion-button>        
   </div>
 </ion-content>
 
