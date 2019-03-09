@@ -8,5 +8,4 @@ export interface Paciente{
     telefone: number;
     endereco: string;
     instituicao: string;
-    cuidador: Cuidador;
 }

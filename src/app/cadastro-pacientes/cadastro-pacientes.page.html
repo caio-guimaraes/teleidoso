@@ -15,12 +15,12 @@
   <ion-list>
     <ion-item>
       <ion-label position="floating">Nome:</ion-label>
-      <ion-input [(ngModel)] = "paciente.nome"></ion-input>
+      <ion-input [(ngModel)] = "cuidador.paciente.nome"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Sexo:</ion-label>
-      <ion-select [(ngModel)] = "paciente.sexo">
+      <ion-select [(ngModel)] = "cuidador.paciente.sexo">
         <ion-select-option value="Masculino">Masculino</ion-select-option>
         <ion-select-option value="Feminino">Feminino</ion-select-option>
       </ion-select>
@@ -28,22 +28,22 @@
 
     <ion-item>
       <ion-label position="floating">Data de Nascimento:</ion-label>
-      <ion-input [(ngModel)] = "paciente.dataNascimento"></ion-input>
+      <ion-input [(ngModel)] = "cuidador.paciente.dataNascimento"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Telefone:</ion-label>
-      <ion-input type="number" [(ngModel)] = "paciente.telefone"></ion-input>
+      <ion-input type="number" [(ngModel)] = "cuidador.paciente.telefone"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Endereço:</ion-label>
-      <ion-textarea [(ngModel)] = "paciente.endereco" maxlength ="500"></ion-textarea>
+      <ion-textarea [(ngModel)] = "cuidador.paciente.endereco" maxlength ="500"></ion-textarea>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Instituição:</ion-label>
-      <ion-select [(ngModel)] = "paciente.instituicao">
+      <ion-select [(ngModel)] = "cuidador.paciente.instituicao">
         <ion-select-option value="Hospital Adventista Silvestre">Hospital Adventista Silvestre</ion-select-option>
         <ion-select-option value="UNB">UNB</ion-select-option>
         <ion-select-option value="Melhor em Casa – São Gonçalo">Melhor em Casa – São Gonçalo</ion-select-option>
@@ -55,12 +55,12 @@
     <h3>Informações do Cuidador</h3>
     <ion-item>
         <ion-label position="floating">Nome:</ion-label>
-        <ion-input [(ngModel)] = "paciente.cuidador.nome"></ion-input>
+        <ion-input [(ngModel)] = "cuidador.nome"></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="floating">Sexo:</ion-label>
-        <ion-select [(ngModel)] = "paciente.cuidador.sexo">
+        <ion-select [(ngModel)] = "cuidador.sexo">
           <ion-select-option value="Masculino">Masculino</ion-select-option>
           <ion-select-option value="Feminino">Feminino</ion-select-option>
         </ion-select>
@@ -68,20 +68,20 @@
   
       <ion-item>
         <ion-label position="floating">Data de Nascimento:</ion-label>
-        <ion-input [(ngModel)] = "paciente.cuidador.dataNascimento"></ion-input>
+        <ion-input [(ngModel)] = "cuidador.dataNascimento"></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="floating">Telefone:</ion-label>
-        <ion-input type="number" [(ngModel)] = "paciente.cuidador.telefone"></ion-input>
+        <ion-input type="number" [(ngModel)] = "cuidador.telefone"></ion-input>
       </ion-item>
   
       <ion-item>
         <ion-label position="floating">Endereço:</ion-label>
-        <ion-textarea [(ngModel)] = "paciente.cuidador.endereco" maxlength ="500"></ion-textarea>
+        <ion-textarea [(ngModel)] = "cuidador.endereco" maxlength ="500"></ion-textarea>
       </ion-item>
   </ion-list>
 
-  <ion-button expand="block"  fill="clear" (click)="cadastraPaciente(paciente)">Add</ion-button>
+  <ion-button expand="block"  fill="clear" (click)="cadastraPaciente(cuidador)">Add</ion-button>
   
 </ion-content>

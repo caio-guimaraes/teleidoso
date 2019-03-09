@@ -11,21 +11,37 @@ import { Cuidador } from '../models/cuidador/cuidador.model';
 })
 export class CadastroPacientesPage implements OnInit {
 
-  paciente: Paciente = {
+  cuidador: Cuidador = {
     nome: '',
     sexo: '',
     dataNascimento: '',
     telefone: undefined,
     endereco: '',
-    instituicao: '',
-    cuidador:{
+    paciente:{
       nome: '',
       sexo: '',
       dataNascimento: '',
       telefone: undefined,
-      endereco: ''
+      endereco: '',
+      instituicao: ''
     }
   }
+
+  // paciente: Paciente = {
+  //   nome: '',
+  //   sexo: '',
+  //   dataNascimento: '',
+  //   telefone: undefined,
+  //   endereco: '',
+  //   instituicao: '',
+  //   cuidador:{
+  //     nome: '',
+  //     sexo: '',
+  //     dataNascimento: '',
+  //     telefone: undefined,
+  //     endereco: ''
+  //   }
+  // }
 
   // cuidador: Cuidador = {
   //   nome: '',
@@ -35,13 +51,13 @@ export class CadastroPacientesPage implements OnInit {
   //   endereco: ''
   // }
 
-  constructor(private router: Router, private pacientesList: PacienteService) { }
+  constructor(private router: Router, private cuidadoresList: PacienteService) { }
 
   ngOnInit() {
   }
 
-  public cadastraPaciente(paciente: Paciente){
-    this.pacientesList.create(paciente).then(ref => {
+  public cadastraPaciente(cuidador: Cuidador){
+    this.cuidadoresList.create(cuidador).then(ref => {
       this.router.navigate(['/pacientes-list'])
     })
   }

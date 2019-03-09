@@ -12,14 +12,14 @@ import { Cuidador } from '../models/cuidador/cuidador.model';
 export class PacienteService {
 
   // private pacientesListRef = this.db.list<Paciente>('pacientes')
-  private pacientesCollection: AngularFirestoreCollection<Paciente>;
-  private pacientesList: Observable<Paciente[]>;
+  private cuidadoresCollection: AngularFirestoreCollection<Cuidador>;
+  private cuidadoresList: Observable<Cuidador[]>;
 
   // constructor(private db: AngularFireDatabase) { }
   constructor(private db: AngularFirestore) { 
-    this.pacientesCollection = db.collection<Paciente>('pacientes');
+    this.cuidadoresCollection = db.collection<Cuidador>('cuidadores');
 
-    this.pacientesList = this.pacientesCollection.snapshotChanges().pipe(
+    this.cuidadoresList = this.cuidadoresCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map( a => {
           const data = a.payload.doc.data();
@@ -34,26 +34,26 @@ export class PacienteService {
   //private pacientesList: Observable<Paciente[]>;
 
   public getAll(){
-    return this.pacientesList;
+    return this.cuidadoresList;
   }
 
-  public async create(paciente: Paciente){
-    let id = await this.pacientesCollection.ref.doc().id;
-    paciente['key'] = id;
-    return this.pacientesCollection.doc(id).set(paciente);
+  public async create(cuidador: Cuidador){
+    let id = await this.cuidadoresCollection.ref.doc().id;
+    cuidador['key'] = id;
+    return this.cuidadoresCollection.doc(id).set(cuidador);
     // return this.pacientesCollection.add(paciente);
   }
 
   public getPaciente(id): Observable<any>{
-    return this.pacientesCollection.doc<Paciente>(id).valueChanges();
+    return this.cuidadoresCollection.doc<Cuidador>(id).valueChanges();
   }
 
-  updatePaciente(paciente: Paciente, id: string){
-    return this.pacientesCollection.doc(id).update(paciente);
+  updatePaciente(cuidador: Cuidador, id: string){
+    return this.cuidadoresCollection.doc(id).update(cuidador);
   }
 
   public remove(id){
-    return this.pacientesCollection.doc(id).delete;
+    return this.cuidadoresCollection.doc(id).delete;
   }
 
   // public getAll(){

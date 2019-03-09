@@ -3,6 +3,7 @@ import { Paciente } from '../models/paciente/paciente.model';
 import { PacienteService } from '../services/paciente.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import { Cuidador } from '../models/cuidador/cuidador.model';
 
 @Component({
   selector: 'app-paciente-details',
@@ -11,13 +12,13 @@ import { LoadingController } from '@ionic/angular';
 })
 export class PacienteDetailsPage implements OnInit {
 
-  paciente: Paciente;
-  pacienteKey = null;
-  constructor(private pacienteList: PacienteService, private route: ActivatedRoute, private loadingController: LoadingController) { }
+  cuidador: Cuidador;
+  cuidadorKey = null;
+  constructor(private cuidadoresList: PacienteService, private route: ActivatedRoute, private loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.pacienteKey = this.route.snapshot.params['id'];
-    if(this.pacienteKey){
+    this.cuidadorKey = this.route.snapshot.params['id'];
+    if(this.cuidadorKey){
       this.loadPaciente();
     }
   }
@@ -29,9 +30,9 @@ export class PacienteDetailsPage implements OnInit {
 
     await loading.present();
 
-    this.pacienteList.getPaciente(this.pacienteKey).subscribe(res =>{
+    this.cuidadoresList.getPaciente(this.cuidadorKey).subscribe(res =>{
       loading.dismiss();
-      this.paciente = res;
+      this.cuidador = res;
     });
   }
 

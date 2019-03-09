@@ -3,6 +3,7 @@ import { Paciente } from '../models/paciente/paciente.model';
 import { Observable } from 'rxjs';
 import { PacienteService } from '../services/paciente.service';
 import { Router } from '@angular/router';
+import { Cuidador } from '../models/cuidador/cuidador.model';
 
 @Component({
   selector: 'app-pacientes-list',
@@ -12,15 +13,15 @@ import { Router } from '@angular/router';
 export class PacientesListPage implements OnInit {
 
   // lista: Observable<Paciente[]>
-  lista: Paciente[];
+  lista: Cuidador[];
   
-  constructor(private router: Router, private pacientesList: PacienteService) {
+  constructor(private router: Router, private cuidadoresList: PacienteService) {
     // this.lista = this.pacientesList.getAll().valueChanges();
     // console.log(this.lista);
    }
 
   ngOnInit() {
-    this.pacientesList.getAll().subscribe(res => {
+    this.cuidadoresList.getAll().subscribe(res => {
       this.lista = res;
     })
   }

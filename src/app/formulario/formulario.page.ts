@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PacienteService } from '../services/paciente.service';
 import { Paciente } from '../models/paciente/paciente.model';
 import { AlertController } from '@ionic/angular';
+import { Cuidador } from '../models/cuidador/cuidador.model';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +13,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class FormularioPage implements OnInit {
   
-  lista: Paciente[];
+  lista: Cuidador[];
   question = 0;
   showInter = 0;
   showOptions = 0;
@@ -128,13 +129,13 @@ export class FormularioPage implements OnInit {
 
   formularioId = null;
 
-  constructor(private router: Router, private formularioService: FormularioService, private pacientesList: PacienteService, private AlertController: AlertController){
+  constructor(private router: Router, private formularioService: FormularioService, private cuidadoresList: PacienteService, private AlertController: AlertController){
     console.log(this.showOptions);
     this.formulario.data = new Date().toISOString();
   }
 
   ngOnInit() {
-    this.pacientesList.getAll().subscribe(res => {
+    this.cuidadoresList.getAll().subscribe(res => {
       this.lista = res;
     })
   }

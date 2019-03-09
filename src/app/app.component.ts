@@ -20,7 +20,7 @@ export class AppComponent {
       icon: 'grid'
     },
     {
-      title: 'Pacientes',
+      title: 'Cuidadores',
       url: '/pacientes-list',
       icon: 'person'
     },
