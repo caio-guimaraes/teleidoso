@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class FormDetailsPage implements OnInit {
   formulario: Formulario;
+  question = 0;
   formularioKey = null;
   constructor(private route: ActivatedRoute, private loadingController: LoadingController, private formularioList: FormularioService) {
 
@@ -34,5 +35,11 @@ export class FormDetailsPage implements OnInit {
       this.formulario = res;
     });
   }
+
+  public setQuestion(q){
+    this.question = q;
+  }
+
+  
 
 }
