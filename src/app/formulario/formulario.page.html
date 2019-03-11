@@ -53,7 +53,7 @@
         <ion-item>
           <ion-label>Cuidador:</ion-label>
           <ion-select [(ngModel)]='formulario.cuidador' >
-            <ion-select-option *ngFor="let paciente of lista" value="{{cuidador.nome}}">{{ cuidador.nome }}</ion-select-option>
+            <ion-select-option *ngFor="let cuidador of lista" value="{{cuidador.nome}}">{{ cuidador.nome }}</ion-select-option>
           </ion-select>
         </ion-item>
         <br><br>
